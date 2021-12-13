@@ -1,20 +1,36 @@
 <template>
   <div id="app">
-    <h1>Lauro Cervantes</h1>
+    <h1 id="locals">{{title}}</h1>
+    <h2 id="locals2" @mouseover="subTitle = salute">{{subTitle}}</h2>
+    <button id="btn" @mouseover= "button = btnSwitch" @mouseleave="button='Load'" v-on:click="alert()">{{button}}</button>
     <div class="s-services">
+      <h2 id="storie" @mouseover="fam=familie" @mouseleave="fam=null">{{fam}}</h2>
       <img id='images' alt="mua" :src=switchPic style="height: 620px; width:500px" @mouseover="onHover = true" @mouseleave="onHover = false">
+      <img id='images2' alt="mua" :src=getBack style="height: 620px; width:500px" @mouseover="mouseOn = true" @mouseleave="mouseOn = false">
     </div>
   </div>
 </template>
 
 <script>
+import dedication from './assets/dedication.json';
+
 export default {
   name: 'App',
   data() {
     return {
       recentImg: require('./assets/yo5.jpg'),
       earlierImg: require('./assets/yo3.jpeg'),
-      onHover: false
+      fam1: require('./assets/papas.jpeg'),
+      fam2: require('./assets/yo4.jpeg'),
+      onHover: false,
+      mouseOn: false,
+      title: "Lauro Cervantes",
+      subTitle: "- * Portrait of a Loving Family * -",
+      button: "Load",
+      btnSwitch: "Click Here!",
+      salute: "Hello Pal! Welcome to My Website!",
+      fam: null,
+      familie: "Martha Sanchez and Lauro Cervantes, You're the best Parents ever!"
     }
   },
   computed: {
@@ -24,6 +40,18 @@ export default {
       } else {
         return this.recentImg
       }
+    },
+    getBack () {
+      if (this.mouseOn == true ) {
+        return this.fam2
+      } else {
+        return this.fam1
+      }
+    },
+  },
+  methods: {
+    alert: function () {
+      this.fam = dedication.story;
     }
   }
 }
@@ -32,44 +60,33 @@ export default {
 <style>
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
-#images {
+#images{
   border-radius: 10em;
+  border-style: dotted;
+  border-color: rgba(210, 175, 238, 0.96);
+  margin-right: 25px;
 }
 
-h1, h2 {
-  font-family: Rancho, serif;
-  text-align: center;
+#images2{
+  border-radius: 10em;
+  border-style: dotted;
+  border-color: rgba(210, 175, 238, 0.96);
+  margin-left: 25px;
 }
+
 
 .s-services {
-  padding-top: 24rem;
+  padding-top: 5rem;
   padding-bottom: 20rem;
   background-color: #1d1b37;
   position: relative;
 }
-
-.s-services__leftcol p.lead {
-  max-width: 90%;
-}
-
-.s-services .vert-line {
-  width: 2px;
-  height: 20rem;
-  background-color: #f9861a;
-  -webkit-transform: translate3d(50%, 0, 0);
-  transform: translate3d(50%, 0, 0);
-  position: absolute;
-  bottom: -20rem;
-  left: 20px;
-}
-
 
 .services-list h5 {
   color: #ffffff;
@@ -80,7 +97,6 @@ h1, h2 {
   font-family: "Gothic A1", sans-serif;
   font-weight: 400;
   font-size: 3.6rem;
-  padding-left: 1.111em;
   margin: 0;
   position: relative;
 }
@@ -99,19 +115,13 @@ h1, h2 {
 }
 
 
-.is-active .services-list__item-header::after {
-  -webkit-transform: rotate(225deg);
-  transform: rotate(225deg);
-}
-
-
 @media screen and (max-width:1040px) {
   .s-services {
     height: 12rem;
     left: 16px;
   }
 
-  .s-services__content .s-services__leftcol p.lead {
+  .s-services__content .s-services__leftcol p{
     max-width: none;
   }
 
@@ -122,17 +132,10 @@ h1, h2 {
     padding-top: 20rem;
   }
 
-  .s-services__content .s-services__leftcol {
-    -ms-flex: 0 0 100%;
-    -webkit-box-flex: 0;
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
 }
 
 @media screen and (max-width:600px) {
-  .s-services .vert-line {
+  .s-services  {
     left: 34px;
   }
 
@@ -150,13 +153,44 @@ h1, h2 {
 }
 
 @media screen and (max-width:400px) {
-  .s-services .vert-line {
+  .s-services {
     left: 24px;
   }
 
   .services-list__item-header h5 {
     font-size: 2.8rem;
   }
+}
+#locals {
+  font-family: Rancho, serif;
+  text-align: center;
+  font-size: 80px;
+}
+
+#locals2{
+  font-family: Rancho, serif;
+  text-align: center;
+  font-size: 40px;
+}
+
+#storie {
+  font-family: Rancho, serif;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  padding-bottom: 5rem;
+}
+
+#btn{
+  font-size: 30px;
+  font-family: Rancho, serif;
+  color: white;
+  background-color: #1d1b37;
+  border-radius: 30em;
+}
+
+#btn:hover {
+  color: rgb(251, 255, 128);
 }
 
 </style>
