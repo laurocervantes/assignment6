@@ -1,5 +1,10 @@
 # MET BU 601 - Assignment 6 LAURO CERVANTES
 
+## Project Netlify Link
+```
+https://lc-homework6.netlify.app
+```
+
 ## Project setup
 ```
 npm install
