@@ -1,5 +1,11 @@
 # MET BU 601 - Assignment 6 LAURO CERVANTES
 
+
+## Project GitHub Link
+```
+https://github.com/laurocervantes/assignment6.git
+```
+
 ## Project Netlify Link
 ```
 https://lc-homework6.netlify.app
